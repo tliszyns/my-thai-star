@@ -15,7 +15,7 @@ import com.querydsl.jpa.impl.JPAQuery;
 /**
  * {@link DefaultRepository} for {@link DishEntity}.
  */
-public interface DishRepository extends DefaultRepository<DishEntity> {
+public interface DishRepository extends DefaultRevisionedRepository<DishEntity> {
 
   /**
    * @param criteria the {@link DishSearchCriteriaTo} with the criteria to search.

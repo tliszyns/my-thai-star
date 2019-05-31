@@ -8,13 +8,14 @@ import javax.persistence.Version;
 
 import com.devonfw.application.mtsj.general.common.api.ApplicationEntity;
 import com.devonfw.module.basic.common.api.entity.PersistenceEntity;
+import com.devonfw.module.basic.common.api.entity.RevisionedPersistenceEntity;
 
 /**
  * Abstract Entity for all Entities with an id and a version field.
  *
  */
 @MappedSuperclass
-public abstract class ApplicationPersistenceEntity implements ApplicationEntity, PersistenceEntity<Long> {
+public abstract class ApplicationPersistenceEntity implements ApplicationEntity, PersistenceEntity<Long>, RevisionedPersistenceEntity<Long> {
 
   private static final long serialVersionUID = 1L;
 
@@ -24,6 +25,7 @@ public abstract class ApplicationPersistenceEntity implements ApplicationEntity,
   /** @see #getModificationCounter() */
   private int modificationCounter;
 
+  private Number revision;
   /**
    * The constructor.
    */
@@ -84,5 +86,13 @@ public abstract class ApplicationPersistenceEntity implements ApplicationEntity,
       buffer.append(this.id);
       buffer.append("]");
     }
+  }
+
+  public Number getRevision() {
+    return this.revision;
+  }
+
+  public void setRevision(Number revision) {
+    this.revision = revision;
   }
 }
